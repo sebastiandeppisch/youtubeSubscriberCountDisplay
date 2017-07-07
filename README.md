@@ -5,6 +5,7 @@ This is a real simple YouTube Subscriber Display. You just need two things:
 	- Buy here: Amazon TODO Aliexpress TODO 
  - MAX7219 7-segment module
 	- Buy here: Amazon TODO Aliexpress TODO
+	
  almost no soldering needed! (You just need to solder the pinheader on the pcb)
 ## Hardware 
 Connect the display and the ESP with jumper wires: 
@@ -29,4 +30,4 @@ TODO
 const String CHANNEL = "johnDoe";
 const String APIKEY = "ABCDEFGHIJKLMNOPQRSTUVWXYZ01234567890AB";
 ```
-now you can upload the firmware to the ESP. Then you should see a new Wifi (without a password). Connect to it and enter your Wifi Password (see the github Page of the WiFiManager lib for more info). Then the ESP connects to your Wifi and after a few seconds the subscriber count should appear on the display. 
+Now you can upload the firmware to the ESP. After uploading you should see a new Wifi (without a password). Connect to it and enter your Wifi password (see the github Page of the WiFiManager lib for more info). Then the ESP connects to your Wifi and after a few seconds the subscriber count should appear on the display. 

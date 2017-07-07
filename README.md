@@ -5,7 +5,7 @@ This is a real simple YouTube Subscriber Display. You just need two things:
 	- Buy here: Amazon TODO Aliexpress TODO 
  - MAX7219 7-segment module
 	- Buy here: Amazon TODO Aliexpress TODO
-	
+
  almost no soldering needed! (You just need to solder the pinheader on the pcb)
 ## Hardware 
 Connect the display and the ESP with jumper wires: 
@@ -24,10 +24,12 @@ TODO
 - Install Arduino and ESP8266 librarys: https://github.com/esp8266/Arduino/#installing-with-boards-manager
 - Install WiFiManager library: https://github.com/tzapu/WiFiManager#install-through-library-manager
 - Create an API key for the YouTube Data API v3: https://developers.google.com/youtube/v3/getting-started
-- Put your API key (40(?) signs long) and the name of the YouTube Account (e.g. youtube.com/user/NAME => NAME) in the placeholder in the youtubeSubcriberDisplay.ino (line 12-13)
-	- e.g. API key: ABCDEFGHIJKLMNOPQRSTUVWXYZ01234567890AB youTube url: https://www.youtube.com/user/johnDoe 
+- Put your API key (40(?) signs long) and the name of the YouTube Account (e.g. youtube.com/user/NAME => NAME) in the placeholder in the youtubeSubcriberDisplay.ino (line 12-13) e.g.:
+	- API key: ABCDEFGHIJKLMNOPQRSTUVWXYZ01234567890AB
+	- YouTube URL: https://www.youtube.com/user/johnDoe 
 ```
 const String CHANNEL = "johnDoe";
 const String APIKEY = "ABCDEFGHIJKLMNOPQRSTUVWXYZ01234567890AB";
 ```
-Now you can upload the firmware to the ESP. After uploading you should see a new Wifi (without a password). Connect to it and enter your Wifi password (see the github Page of the WiFiManager lib for more info). Then the ESP connects to your Wifi and after a few seconds the subscriber count should appear on the display. 
+Now you can upload the firmware to the ESP. After uploading you should see a new Wifi (without a password). Connect to it and enter your Wifi password on the captive portal (see the github page of the WiFiManager for more info).
+The ESP connects now to your Wifi and after a few seconds the subscriber count should appear on the display. 

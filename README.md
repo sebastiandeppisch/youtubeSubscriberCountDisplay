@@ -2,9 +2,9 @@
 ## Description
 This is a real simple YouTube Subscriber Display. You just need two things: 
  - ESP8266 - I recommend using the Wemos D1 mini module 
-	- Buy here: Amazon TODO Aliexpress TODO 
+	- Buy here: [Aliexpress](http://s.click.aliexpress.com/e/M3BuvjQ)
  - MAX7219 7-segment module
-	- Buy here: Amazon TODO Aliexpress TODO
+	- Buy here: [Aliexpress]("http://s.click.aliexpress.com/e/A2jeuvf)
 
  almost no soldering needed! (You just need to solder the pinheader on the pcb)
 ## Hardware 
@@ -18,8 +18,8 @@ Connect the display and the ESP with jumper wires:
 | GPIO16 		| D0				| CS				|
 | GPIO14 (SCK)	| D5				| CLK				|
 
-as you can see on the picture below: 
-TODO 
+as you can see on the pictures below: 
+![photo_2017-07-12_00-23-33](https://user-images.githubusercontent.com/3171655/28093694-d01c4f54-6698-11e7-8d02-2e1d96c91dc0.jpg) ![photo_2017-07-12_00-21-03](https://user-images.githubusercontent.com/3171655/28093693-d01ae6e6-6698-11e7-9e6c-5346dafc028a.jpg)
 ## Software
 - Install Arduino and ESP8266 librarys: https://github.com/esp8266/Arduino/#installing-with-boards-manager
 - Install WiFiManager library: https://github.com/tzapu/WiFiManager#install-through-library-manager

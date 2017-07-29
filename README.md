@@ -4,7 +4,7 @@ This is a real simple YouTube Subscriber Display. You just need two things:
  - ESP8266 - I recommend using the Wemos D1 mini module 
 	- Buy here: [Aliexpress](http://s.click.aliexpress.com/e/M3BuvjQ)
  - MAX7219 7-segment module
-	- Buy here: [Aliexpress]("http://s.click.aliexpress.com/e/A2jeuvf)
+	- Buy here: [Aliexpress](http://s.click.aliexpress.com/e/A2jeuvf)
 
  almost no soldering needed! (You just need to solder the pinheader on the pcb)
 ## Hardware 

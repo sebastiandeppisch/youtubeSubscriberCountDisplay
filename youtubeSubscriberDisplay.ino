@@ -15,7 +15,7 @@ const String APIKEY = "";
 
 
 const String API="https://www.googleapis.com/youtube/v3/channels?part=statistics";
-const char* FINGERPRINT = "D1 9C 65 C3 64 87 7E 97 93 9E A0 83 0E C3 8D 7C 98 72 DC 48"; //SHA1 fingerprint of www.googleapis.com
+const char* FINGERPRINT = "F8 57 54 DB 0E A3 10 92 FE CD 4C 0B B0 F5 C4 29 E7 1D 86 D0"; //SHA1 fingerprint of www.googleapis.com
 LedControl lc=LedControl(13,14,16,1);
 void setup() {
   Serial.begin(9600);
@@ -42,7 +42,7 @@ void setNumber(uint32_t number){
     uint32_t exponent = tenPow(i);
     n = n / exponent;
     n = n % 10;
-    if(i > 0 && n==0){ //dont display leading zeros
+    if(i > 0 && n==0 && number < exponent){ //dont display leading zeros
       n = 16; // 16 e.g. is all off
     }
     lc.setDigit(0, i, n, false);

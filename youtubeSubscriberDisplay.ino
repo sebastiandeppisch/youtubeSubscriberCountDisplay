@@ -15,8 +15,11 @@ const String APIKEY = "";
 
 
 const String API="https://www.googleapis.com/youtube/v3/channels?part=statistics";
-const char* FINGERPRINT = "F8 57 54 DB 0E A3 10 92 FE CD 4C 0B B0 F5 C4 29 E7 1D 86 D0"; //SHA1 fingerprint of www.googleapis.com
+const char*  HOST="www.googleapis.com";
+
 LedControl lc=LedControl(13,14,16,1);
+
+WiFiClientSecure client;
 void setup() {
   Serial.begin(9600);
   
@@ -52,21 +55,26 @@ void setNumber(uint32_t number){
 bool firstTry = true;
 void loop() { 
   if((WiFi.status() == WL_CONNECTED)) {
-      HTTPClient http;
-      http.begin(API+"&forUsername="+CHANNEL+"&key="+APIKEY, FINGERPRINT);
-      int httpCode = http.GET();
-      if(httpCode > 0) {
-          if(httpCode == HTTP_CODE_OK) {
-              String payload = http.getString();
-              Serial.println(payload);
-              StaticJsonBuffer<1000> jsonBuffer;
-              JsonObject& root = jsonBuffer.parseObject(payload);
-              setNumber(root["items"][0]["statistics"]["subscriberCount"]);
-              firstTry = false;
-          }
-      }else{
-        Serial.printf("[HTTP] GET... failed, error: %s\n", http.errorToString(httpCode).c_str());
+      client.connect(HOST, 443);
+      client.print(String("GET ") + API+"&forUsername="+CHANNEL+"&key="+APIKEY + " HTTP/1.1\r\n" +
+        "Host: " + HOST + "\r\n" +
+        "User-Agent: BuildFailureDetectorESP8266\r\n" +
+        "Connection: close\r\n\r\n");
+      while (client.connected()) {
+        String line = client.readStringUntil('\n');
+        if (line == "\r") {
+          break;
+        }
       }
+      String payload = client.readString();
+      Serial.println(payload);
+      StaticJsonBuffer<1000> jsonBuffer;
+      JsonObject& root = jsonBuffer.parseObject(payload);
+      setNumber(root["items"][0]["statistics"]["subscriberCount"]);
+      firstTry = false;
+  }else{
+    Serial.println("not connected");
+    delay(1000);
   }
   if(!firstTry){ //there seems - sometimes- to a be problem on checking the fingerprint. So, just for the first try, dont wait between (failed) polls
     delay(60000);
